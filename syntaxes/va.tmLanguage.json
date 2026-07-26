@@ -1,0 +1,215 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "foxioo.vanillascript",
+  "scopeName": "main.va",
+  "patterns":
+  [
+    { "include": "#comments" },
+    { "include": "#directives" },
+    { "include": "#system-variables" },
+    { "include": "#blocks" },
+    { "include": "#keywords" },
+    { "include": "#types" },
+    { "include": "#functions" },
+    { "include": "#strings" },
+    { "include": "#constant" },
+    { "include": "#numbers" },
+    { "include": "#operators" },
+    { "include": "#punctuation" }
+  ],
+
+  "repository":
+  {
+    "comments":
+    {
+      "patterns":
+      [
+        {
+          "name": "comment.block.documentation.va",
+          "begin": "/\\*\\*(?!/)",
+          "end": "\\*/",
+          "captures": {
+            "0": { "name": "punctuation.definition.comment.va" }
+          }
+        },
+        {
+          "name": "comment.block.va",
+          "begin": "/\\*",
+          "end": "\\*/",
+          "captures": {
+            "0": { "name": "punctuation.definition.comment.va" }
+          }
+        },
+        {
+          "name": "comment.line.double-slash.va",
+          "match": "(//).*$\\n?",
+          "captures": {
+            "1": { "name": "punctuation.definition.comment.va" }
+          }
+        }
+      ]
+    },
+
+    "directives":
+    {
+      "patterns":
+      [
+        {
+          "name": "keyword.control.directive.va",
+          "match": "^\\s*(#(PROGRAM\\.PRE|LOAD\\.LIBRARY|LOAD\\.SOURCE))\\b"
+        }
+      ]
+    },
+
+    "blocks":
+    {
+      "patterns":
+      [
+        {
+          "name": "punctuation.section.block.begin.va",
+          "match": ":\\("
+        },
+        {
+          "name": "punctuation.section.block.end.va",
+          "match": "\\):"
+        }
+      ]
+    },
+
+    "system-variables":
+    {
+      "patterns":
+      [
+        {
+          "name": "variable.language.special.va",
+          "match": "\\b__(VANILLA_[A-Z_]+)\\b"
+        }
+      ]
+    },
+    "keywords":
+    {
+      "patterns":
+      [
+        {
+          "name": "keyword.control.va",
+          "match": "\\b(if|elif|unless|elunless|else|for|while|until|break|continue|return|fun)\\b"
+        }
+      ]
+    },
+
+    "functions":
+    {   
+      "patterns":
+      [
+        {
+          "name": "entity.name.function.va",
+          "match": "\\b([a-zA-Z_][a-zA-Z0-9_\\.]*)\\s*(?=\\()"
+        }
+      ]
+    },
+
+    "strings":
+    {
+      "name": "string.quoted.double.va",
+      "begin": "\"",
+      "end": "\"",
+      "patterns":
+      [
+        {
+          "name": "constant.character.escape.va",
+          "match": "\\\\."
+        }
+      ]
+    },
+
+    "constant":
+    {
+      "name": "constant.language.va",
+      "match": "\\b(?:true|false|null)\\b"
+    },
+
+    "types":
+    {
+      "patterns":
+      [
+        {
+          "name": "storage.type.va",
+          "match": "\\b(bool|int_8|int_16|int_32|int_64|float_16|float_8|float_32|float_64|bool_2|int2_8|int2_16|int2_32|int2_64|float2_16|float2_8|float2_32|float2_64|bool_3|int3_8|int3_16|int3_32|int3_64|float3_16|float3_8|float3_32|float3_64|bool_4|int4_8|int4_16|int4_32|int4_64|float4_16|float4_8|float4_32|float4_64|string|void|lambda|point|pointer|object|auto)\\b"
+        }
+      ]
+    },
+
+    "numbers":
+    {
+      "patterns":
+      [
+        {
+          "name": "constant.numeric.float.va",
+          "match": "\\b[0-9]+\\.[0-9]+\\b"
+        },
+        {
+          "name": "constant.numeric.integer.va",
+          "match": "\\b[0-9]+\\b"
+        }
+      ]
+    },
+
+    "operators":
+    {
+      "patterns":
+      [
+        {
+          "name": "keyword.operator.logical.va",
+          "match": "(&&|\\|\\||\\^\\^|!)"
+        },
+        {
+          "name": "keyword.operator.bitwise.va",
+          "match": "(&|\\||\\^)"
+        },
+        {
+          "name": "keyword.operator.comparison.va",
+          "match": "(<=|>=|==|!=|<|>)"
+        },
+        {
+          "name": "keyword.operator.arithmetic.va",
+          "match": "(\\+\\+|--|\\+|-|\\*|/|%)"
+        },
+        {
+          "name": "keyword.operator.assignment.va",
+          "match": "(=)"
+        }
+      ]
+    },
+    
+    "punctuation":
+    {
+      "patterns":
+      [
+        {
+          "name": "punctuation.separator.comma.va",
+          "match": ","
+        },
+        {
+          "name": "punctuation.terminator.statement.va",
+          "match": ";"
+        },
+        {
+          "name": "punctuation.accessor.dot.va",
+          "match": "\\."
+        },
+        {
+          "name": "punctuation.separator.colon.va",
+          "match": "(?<!\\)):(?!\\()"
+        },
+        {
+          "name": "meta.brace.round.va",
+          "match": "\\(|\\)"
+        },
+        {
+          "name": "meta.brace.square.va",
+          "match": "\\[|\\]"
+        }
+      ]
+    }
+  }
+}

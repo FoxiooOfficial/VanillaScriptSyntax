@@ -1,0 +1,43 @@
+/*
+	This is ONLY an example of code for testing syntax highlighting in VS Code!
+*/
+
+#PROGRAM.PRE :(
+    __VANILLA_FUNCTION_CALL = main();
+    __VANILLA_VERSION_TARGET = "1.0";
+):
+
+#LOAD.LIBRARY :(
+	pointer va = (point)Vanilla;
+	pointer math = (point)Vanilla.lib.Math;
+	null;
+):
+
+#LOAD.SOURCE :(
+	null;
+):
+
+fun int_32 main()
+:(
+	int_32 x = lambda(int_32 test) :(
+		
+		int_32 i = 0;
+		println(math.abs(test), "loops!");
+
+		until(x == math.abs(test)) :(
+			i++;
+		):
+
+		return i;
+	):
+
+	println("Done!");
+
+	float4_32 color = float4_32(1.0, 0.5, 0.25, 0.125);
+	if(all(color.xyz >= 0.25))
+		println("Test");
+	else
+		println("Testn't");
+	
+	return 0;
+):
