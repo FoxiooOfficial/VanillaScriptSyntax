@@ -1,0 +1,27 @@
+{
+    "Hello, World!": {
+        "prefix": "!!!",
+        "body": [
+            "#PROGRAM.PRE :(",
+            "\t__VANILLA_FUNCTION_CALL = main();",
+            "\t__VANILLA_VERSION_TARGET = \"1.0\";",
+            "):",
+            "",
+            "#LOAD.LIBRARY :(",
+            "\tpointer va = (point)Vanilla;",
+            "):",
+            "",
+            "#LOAD.SOURCE :(",
+            "\tnull;",
+            "):",
+            "",
+            "fun int_32 main() :(",
+            "\tprintln(\"Hello, World!\");",
+            "\treturn 0;",
+            "):",
+            "",
+            "$0"
+        ],
+        "description": "Create a basic VanillaScript program!"
+    }
+}

@@ -2,24 +2,35 @@
   "name": "va",
   "displayName": "VanillaScript",
   "description": "Syntax highlighting for the VanillaScript scripting system for FVEP/Foxioo's Vanilla Extension Plus! in Visual Studio Code",
-  "version": "0.0.1",
+  "version": "0.0.2",
+  "publisher": "FoxiooOfficial",
   "engines": {
     "vscode": "^1.125.0"
   },
   "categories": [
     "Programming Languages"
   ],
-  "contributes": {
-    "languages": [{
+  "contributes":
+  {
+    "languages":
+    [{
       "id": "va",
       "aliases": ["VanillaScript", "va"],
       "extensions": [".va"],
       "configuration": "./language-configuration.json"
     }],
-    "grammars": [{
+
+    "grammars":
+    [{
       "language": "va",
       "scopeName": "main.va",
       "path": "./syntaxes/va.tmLanguage.json"
+    }],
+
+    "snippets": [
+    {
+        "language": "va",
+        "path": "./snippets/vanilla.json"
     }]
   }
 }

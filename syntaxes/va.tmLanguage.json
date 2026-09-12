@@ -92,7 +92,7 @@
       [
         {
           "name": "keyword.control.va",
-          "match": "\\b(if|elif|unless|elunless|else|for|while|until|break|continue|return|fun)\\b"
+          "match": "\\b(if|elif|unless|elless|else|for|while|until|break|continue|return|fun)\\b"
         }
       ]
     },
