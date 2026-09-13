@@ -246,7 +246,7 @@ const keywords = [
     'return', 'fun', 'crash'
 ];
 const constants = ['true', 'false', 'null', 'maybe'];
-const systemvar = ['__VANILLA_FUNCTION_CALL', '__VANILLA_VERSION_TARGET'];
+const systemvar = ['__VANILLA_FUNCTION_CALL', '__VANILLA_VERSION_TARGET', '__VANILLA_PROGRAM_TYPE', '__VANILLA_FUNCTION_EXECUTE_MODE'];
 const directives = [
     { label: '#PROGRAM.PRE', desc: 'Program Preprocessor Block and Runtime Flags' },
     { label: '#LOAD.LIBRARY', desc: 'Block defining library pointers' },

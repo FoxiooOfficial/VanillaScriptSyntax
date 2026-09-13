@@ -267,7 +267,7 @@ const types = [
     'float1x2_64', 'float2x2_64', 'float3x2_64', 'float4x2_64', 
     'float1x3_64', 'float2x3_64', 'float3x3_64', 'float4x3_64', 
     'float1x4_64', 'float2x4_64', 'float3x4_64', 'float4x4_64', 
-    
+
     'string', 
     'void', 'lambda', 
     'point', 'pointer', 
@@ -282,7 +282,7 @@ const keywords = [
 
 const constants = ['true', 'false', 'null', 'maybe'];
 
-const systemvar = ['__VANILLA_FUNCTION_CALL', '__VANILLA_VERSION_TARGET'];
+const systemvar = ['__VANILLA_FUNCTION_CALL', '__VANILLA_VERSION_TARGET', '__VANILLA_PROGRAM_TYPE', '__VANILLA_FUNCTION_EXECUTE_MODE'];
 
 const directives = [
     { label: '#PROGRAM.PRE', desc: 'Program Preprocessor Block and Runtime Flags' },
