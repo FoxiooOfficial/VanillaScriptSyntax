@@ -9,7 +9,7 @@
 
 #LOAD.LIBRARY :(
 	pointer va = (point)Vanilla;
-	pointer math = (point)Vanilla.lib.Math;
+	pointer math = (point)Vanilla.Library.Math;
 	null;
 ):
 

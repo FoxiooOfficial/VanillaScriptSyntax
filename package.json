@@ -7,6 +7,10 @@
   "engines": {
     "vscode": "^1.125.0"
   },
+  "main": "./out/extension.js",
+  "activationEvents": [
+    "onLanguage:va"
+  ],
   "categories": [
     "Programming Languages"
   ],
@@ -32,5 +36,9 @@
         "language": "va",
         "path": "./snippets/vanilla.json"
     }]
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.125.0",
+    "typescript": "^5.0.0"
   }
 }
