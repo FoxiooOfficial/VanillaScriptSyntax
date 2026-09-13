@@ -198,8 +198,62 @@ const tree = {
     },
     "Vanilla": "va"
 };
+const types = [
+    'bool', 'bool2', 'bool3', 'bool4',
+    'bool1x2', 'bool2x2', 'bool3x2', 'bool4x2',
+    'bool1x3', 'bool2x3', 'bool3x3', 'bool4x3',
+    'bool1x4', 'bool2x4', 'bool3x4', 'bool4x4',
+    'int_8', 'int2_8', 'int3_8', 'int4_8',
+    'int1x2_8', 'int2x2_8', 'int3x2_8', 'int4x2_8',
+    'int1x3_8', 'int2x3_8', 'int3x3_8', 'int4x3_8',
+    'int1x4_8', 'int2x4_8', 'int3x4_8', 'int4x4_8',
+    'int_16', 'int2_16', 'int3_16', 'int4_16',
+    'int1x2_16', 'int2x2_16', 'int3x2_16', 'int4x2_16',
+    'int1x3_16', 'int2x3_16', 'int3x3_16', 'int4x3_16',
+    'int1x4_16', 'int2x4_16', 'int3x4_16', 'int4x4_16',
+    'int_32', 'int2_32', 'int3_32', 'int4_32',
+    'int1x2_32', 'int2x2_32', 'int3x2_32', 'int4x2_32',
+    'int1x3_32', 'int2x3_32', 'int3x3_32', 'int4x3_32',
+    'int1x4_32', 'int2x4_32', 'int3x4_32', 'int4x4_32',
+    'int_64', 'int2_64', 'int3_64', 'int4_64',
+    'int1x2_64', 'int2x2_64', 'int3x2_64', 'int4x2_64',
+    'int1x3_64', 'int2x3_64', 'int3x3_64', 'int4x3_64',
+    'int1x4_64', 'int2x4_64', 'int3x4_64', 'int4x4_64',
+    'float_8', 'float2_8', 'float3_8', 'float4_8',
+    'float1x2_8', 'float2x2_8', 'float3x2_8', 'float4x2_8',
+    'float1x3_8', 'float2x3_8', 'float3x3_8', 'float4x3_8',
+    'float1x4_8', 'float2x4_8', 'float3x4_8', 'float4x4_8',
+    'float_16', 'float2_16', 'float3_16', 'float4_16',
+    'float1x2_16', 'float2x2_16', 'float3x2_16', 'float4x2_16',
+    'float1x3_16', 'float2x3_16', 'float3x3_16', 'float4x3_16',
+    'float1x4_16', 'float2x4_16', 'float3x4_16', 'float4x4_16',
+    'float_32', 'float2_32', 'float3_32', 'float4_32',
+    'float1x2_32', 'float2x2_32', 'float3x2_32', 'float4x2_32',
+    'float1x3_32', 'float2x3_32', 'float3x3_32', 'float4x3_32',
+    'float1x4_32', 'float2x4_32', 'float3x4_32', 'float4x4_32',
+    'float_64', 'float2_64', 'float3_64', 'float4_64',
+    'float1x2_64', 'float2x2_64', 'float3x2_64', 'float4x2_64',
+    'float1x3_64', 'float2x3_64', 'float3x3_64', 'float4x3_64',
+    'float1x4_64', 'float2x4_64', 'float3x4_64', 'float4x4_64',
+    'string',
+    'void', 'lambda',
+    'point', 'pointer',
+    'object', 'auto'
+];
+const keywords = [
+    'if', 'elif', 'unless', 'elless', 'else',
+    'for', 'while', 'until', 'break', 'continue',
+    'return', 'fun', 'crash'
+];
+const constants = ['true', 'false', 'null', 'maybe'];
+const systemvar = ['__VANILLA_FUNCTION_CALL', '__VANILLA_VERSION_TARGET'];
+const directives = [
+    { label: '#PROGRAM.PRE', desc: 'Program Preprocessor Block and Runtime Flags' },
+    { label: '#LOAD.LIBRARY', desc: 'Block defining library pointers' },
+    { label: '#LOAD.SOURCE', desc: 'Block defining pointers to external scripts' }
+];
 function activate(context) {
-    const provider = vscode.languages.registerCompletionItemProvider('va', {
+    const dotprovider = vscode.languages.registerCompletionItemProvider('va', {
         provideCompletionItems(document, position) {
             const prefix = document.lineAt(position).text.substring(0, position.character);
             const match = prefix.match(/([a-zA-Z0-9_.]+)\.$/);
@@ -227,13 +281,48 @@ function activate(context) {
                 }
                 else {
                     item.kind = vscode.CompletionItemKind.Module;
-                    item.detail = `Moduł ${key}`;
+                    item.detail = `Module ${key}`;
                 }
                 items.push(item);
             }
             return items;
         }
     }, '.');
-    context.subscriptions.push(provider);
+    context.subscriptions.push(dotprovider);
+    const globalprovider = vscode.languages.registerCompletionItemProvider('va', {
+        provideCompletionItems(document, position) {
+            const prefix = document.lineAt(position).text.substring(0, position.character);
+            if (prefix.match(/[a-zA-Z0-9_]+\.[a-zA-Z0-9_]*$/)) {
+                return undefined;
+            }
+            const items = [];
+            types.forEach(t => {
+                const item = new vscode.CompletionItem(t, vscode.CompletionItemKind.TypeParameter);
+                item.detail = "Data type";
+                items.push(item);
+            });
+            keywords.forEach(k => {
+                const item = new vscode.CompletionItem(k, vscode.CompletionItemKind.Keyword);
+                items.push(item);
+            });
+            constants.forEach(c => {
+                const item = new vscode.CompletionItem(c, vscode.CompletionItemKind.Constant);
+                items.push(item);
+            });
+            systemvar.forEach(v => {
+                const item = new vscode.CompletionItem(v, vscode.CompletionItemKind.Variable);
+                item.detail = "System variable";
+                items.push(item);
+            });
+            directives.forEach(d => {
+                const item = new vscode.CompletionItem(d.label, vscode.CompletionItemKind.Snippet);
+                item.detail = d.desc;
+                item.insertText = new vscode.SnippetString(`${d.label} :(\n\t$1\n):\n$0`);
+                items.push(item);
+            });
+            return items;
+        }
+    }, '#', '_');
+    context.subscriptions.push(dotprovider, globalprovider);
 }
 function deactivate() { }
