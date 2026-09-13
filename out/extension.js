@@ -196,6 +196,7 @@ const tree = {
             //"auto"      : "Convert the input data type to auto"
         },
     },
+    "CTFMMF2": {},
     "Vanilla": "va"
 };
 const types = [
