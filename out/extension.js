@@ -244,7 +244,7 @@ const types = [
 const keywords = [
     'if', 'elif', 'unless', 'elless', 'else',
     'for', 'while', 'until', 'break', 'continue',
-    'return', 'fun', 'crash'
+    'return', 'fun', 'crash', 'noperation'
 ];
 const constants = ['true', 'false', 'null', 'maybe'];
 const systemvar = ['__VANILLA_FUNCTION_CALL', '__VANILLA_VERSION_TARGET', '__VANILLA_PROGRAM_TYPE', '__VANILLA_FUNCTION_EXECUTE_MODE'];

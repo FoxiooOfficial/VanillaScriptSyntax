@@ -282,7 +282,7 @@ const types = [
 const keywords = [
     'if', 'elif', 'unless', 'elless', 'else', 
     'for', 'while', 'until', 'break', 'continue',
-    'return', 'fun', 'crash'
+    'return', 'fun', 'crash', 'noperation'
 ];
 
 const constants = ['true', 'false', 'null', 'maybe'];
